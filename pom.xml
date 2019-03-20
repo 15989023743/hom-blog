@@ -11,6 +11,7 @@
     <modules>
         <module>eureka-register-center</module>
         <module>eureka-provider</module>
+        <module>eureka-consumer</module>
     </modules>
 
     <properties>
