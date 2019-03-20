@@ -1,0 +1,16 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: register-center
+eureka:
+  client:
+    #service-url:
+      #defaultZone: http://server1:8090/eureka
+    fetch-registry: false
+    register-with-eureka: false
+  instance:
+    hostname: server1
+  server:
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 5000
