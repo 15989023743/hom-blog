@@ -6,7 +6,11 @@
 
     <groupId>com.lemon</groupId>
     <artifactId>blog</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>eureka-register-center</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
