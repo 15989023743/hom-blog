@@ -1,5 +1,8 @@
 package com.lemon.controller;
 
+import com.lemon.service.HelloServiceClient;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,35 +17,35 @@ public class SubstitutionController {
     @Qualifier("remoteRestTemplate")
     private RestTemplate restTemplate;
 
-//    @Autowired
-//    HelloServiceClient helloServiceClient;
+    @Autowired
+    HelloServiceClient helloServiceClient;
 
-//    @GetMapping("/hello")
-//    @HystrixCommand(fallbackMethod = "defaultHello",
-//            commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")})
-//    public String callHello() {
-//        System.out.println(helloServiceClient.hello());
-//        //restTemplate.getForObject("http://LEMON-PROVIDER/helloWorld", String.class)
-//        return helloServiceClient.hello();
-//    }
-//
-//    public String defaultHello() {
-//        return "fail";
-//    }
+    /**
+     * 熔断
+     *
+     * @return
+     */
+    @GetMapping("/hello3")
+    @HystrixCommand(fallbackMethod = "defaultHello",
+            commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")})
+    public String testHello() {
+        System.out.println(helloServiceClient.hello());
+        //restTemplate.getForObject("http://LEMON-PROVIDER/helloWorld", String.class)
+        return helloServiceClient.hello();
+    }
+
+    public String defaultHello() {
+        return "fail";
+    }
 
 
-//    @GetMapping("/hello2")
-//    public String callHello2() {
-//        System.out.println(helloServiceClient.hello());
-//        //restTemplate.getForObject("http://LEMON-PROVIDER/helloWorld", String.class)
-//        return helloServiceClient.hello();
-//    }
+    @GetMapping("/hello2")
+    public String callHello2() {
+        System.out.println(helloServiceClient.hello());
+        //restTemplate.getForObject("http://LEMON-PROVIDER/helloWorld", String.class)
+        return helloServiceClient.hello();
+    }
 
-//    @GetMapping("/hello3")
-//    public String callHello3() {
-//        EurekaConf conf = new EurekaConf();
-//        return conf.getDefaultZone();
-//    }
 
     @GetMapping("/hello")
     public String callHello() {

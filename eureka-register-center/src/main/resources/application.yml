@@ -11,6 +11,6 @@ eureka:
     register-with-eureka: false
   #instance:
     #hostname: server1
-  server:
-    enable-self-preservation: true
-    eviction-interval-timer-in-ms: 5000
+  #server:
+    #enable-self-preservation: true
+    #eviction-interval-timer-in-ms: 5000
