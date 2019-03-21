@@ -12,6 +12,7 @@
         <module>eureka-register-center</module>
         <module>eureka-provider</module>
         <module>eureka-consumer</module>
+        <module>sentinel</module>
     </modules>
 
     <properties>
